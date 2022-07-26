@@ -6,14 +6,325 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>661</width>
+    <height>533</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>661</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>661</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Mia</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>itunes-note-brands.svg</normaloff>itunes-note-brands.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{background-color:#EF233C;}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="search">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>120</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color:#8D99AE;
+	border-radius:20px;
+	color:#FCA311;
+	transition: all  500ms;
+}
+QPushButton::hover{
+	background-color:#FFA62B;
+	border-radius:20px;
+	color:#14213d;
+	transition: all 100ms;
+}
+QPushButton:pressed{
+	background-color:#2B2D42;
+	border-radius:20px;
+	color:#fffff;
+	transition: all 100ms;
+}
+  </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>searchengin-brands.svg</normaloff>searchengin-brands.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="sinput">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>541</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	border-radius:20px;
+	background-color:#EDF2F4;
+	
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>Aranan şarkının ismi veya URL si</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>621</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Poetsen One</family>
+      <pointsize>32</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{color:#EDF2F4;}</string>
+    </property>
+    <property name="text">
+     <string>MİA</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>621</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Poetsen One</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Aranan şarkının ismi veya URL si</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>20</y>
+      <width>47</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>itunes-note-brands.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="songlist">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>200</y>
+      <width>541</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget{
+	border-radius:20px;
+	background-color:#EDF2F4;
+
+}</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="download">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>220</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color:#8D99AE;
+	border-radius:20px;
+	color:#FCA311;
+	transition: all  500ms;
+}
+QPushButton::hover{
+	background-color:#FFA62B;
+	border-radius:20px;
+	color:#14213d;
+	transition: all 100ms;
+}
+QPushButton:pressed{
+	background-color:#2B2D42;
+	border-radius:20px;
+	color:#fffff;
+	transition: all 100ms;
+}
+  </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>download-solid.svg</normaloff>download-solid.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="youtube">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>320</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color:#8D99AE;
+	border-radius:20px;
+	color:#FCA311;
+	transition: all  500ms;
+}
+QPushButton::hover{
+	background-color:#FFA62B;
+	border-radius:20px;
+	color:#14213d;
+	transition: all 100ms;
+}
+QPushButton:pressed{
+	background-color:#2B2D42;
+	border-radius:20px;
+	color:#fffff;
+	transition: all 100ms;
+}
+  </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>youtube-brands.svg</normaloff>youtube-brands.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="me">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>420</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color:#8D99AE;
+	border-radius:20px;
+	color:#FCA311;
+	transition: all  500ms;
+}
+QPushButton::hover{
+	background-color:#9900be;
+	border-radius:20px;
+	color:#14213d;
+	transition: all 100ms;
+}
+QPushButton:pressed{
+	background-color:#2B2D42;
+	border-radius:20px;
+	color:#fffff;
+	transition: all 100ms;
+}
+  </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>86445789.png</normaloff>86445789.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>64</width>
+      <height>64</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>
