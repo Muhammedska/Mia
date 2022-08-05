@@ -44,7 +44,6 @@ class Ui(QtWidgets.QMainWindow):
         self.download.clicked.connect(self.download_clicked)
         self.youtube.clicked.connect(self.youtube_clicked)
         self.me.clicked.connect(self.me_clicked)
-        
 
     def search_clicked(self):
         self.video_ID = []
@@ -55,28 +54,26 @@ class Ui(QtWidgets.QMainWindow):
             self.songlist.addItem(i['title'])
 
     def download_clicked(self):
-        QMessageBox.information(self,"Download", "Downloading started please wait...")
-        #print()
+        QMessageBox.information(
+            self, "Download", "Downloading started please wait...")
+        # print()
         video_url = "https://www.youtube.com" + \
             self.video_ID[self.songlist.currentRow()]
         video_info = youtube_dl.YoutubeDL().extract_info(url=video_url, download=False,)
-        #print(video_info)
+        # print(video_info)
         vname = video_info['title'].replace(r"\\", ' ')
         filename = f"./songs/{vname}.mp3"
         options = {
             'format': 'bestaudio/best',
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',
-            }],
-            
+            'keepvideo': False,
+            'outtmpl': filename,
+
         }
         with youtube_dl.YoutubeDL(options) as ydl:
-            ydl.download([video_info['webpage_url']]) 
-                  
+            ydl.download([video_info['webpage_url']])
+
         QMessageBox.information(self,
-            "Download", "Download complete... {}".format(filename))
+                                "Download", "Download complete... {}".format(filename))
 
     def youtube_clicked(self):
         webbrowser.open("https://www.youtube.com" +
