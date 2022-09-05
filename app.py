@@ -88,3 +88,4 @@ if __name__ == "__main__":
     mw = Ui()
     mw.show()
     sys.exit(app.exec_())
+#https://www.youtube.com/playlist?list=PLwYzzR712Au9pf8DwZ2OVbrN0OVvbhG7j
