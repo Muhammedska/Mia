@@ -22,7 +22,7 @@ for video in playlist.videos:
 
 
 
-import re
+"""import re
 from pytube import Playlist
 playlist = Playlist('https://www.youtube.com/playlist?list=PLwYzzR712Au9pf8DwZ2OVbrN0OVvbhG7j')   
 DOWNLOAD_DIR = './nokia'
@@ -37,4 +37,25 @@ for video in playlist.videos:
         order_by('resolution').\
         desc().\
         first().\
-        download(DOWNLOAD_DIR)
+        download(DOWNLOAD_DIR)"""
+
+import re
+from pytube import Playlist
+playlist = Playlist('https://www.youtube.com/playlist?list=PLwYzzR712Au9pf8DwZ2OVbrN0OVvbhG7j')   
+DOWNLOAD_DIR = './nokia'
+playlist._video_regex = re.compile(r"\"url\":\"(/watch\?v=[\w-]*)")    
+print(len(playlist.video_urls))    
+for url in playlist.video_urls:
+    print(url)
+indi = 1    
+for video in playlist.videos:
+    print('\n')
+    print('{} - {}  ::  downloading : {} with url : {}'.format(str(indi),str(len(playlist.videos)),video.title, video.watch_url))
+    x = [s for s in video.streams if "mp4" in str(s)]
+    
+    special_charsx = ['/',"|",'\\','.','"',"<",">","?","*"]
+    videoname = video.title
+    for i in special_charsx:
+        videoname = videoname.replace(i,' ')
+    print(x[0].download(filename=DOWNLOAD_DIR+"/"+videoname+".mp3"))
+    indi += 1
