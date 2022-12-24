@@ -62,7 +62,14 @@ def playlistChecker(url,file):
         else:
             file.write(url+',')
             indi+=1
-
+def cleaner(path):
+    files = os.listdir(path)
+    indi = 1
+    
+    for i in files:
+        os.remove(path+i)
+        print("[{}/{} - ({})] files was removed".format(indi,len(files),i))
+        indi+=1
 def dirScanCon(mp4dir,mp3dir):
     MP4_DIR = mp4dir
     MP3_DIR = mp3dir
@@ -84,12 +91,13 @@ def dirScanCon(mp4dir,mp3dir):
 
 print('checking system files and dirs')
 core()
+
 MP4_PATH = './core/mp4/'
 MP3_PATH = './core/mp3/'
 APP_ITEM_CORE_DIR = './core/t/'
 
 LINK_LIST_FILE = open(APP_ITEM_CORE_DIR+'app.txt','w+',encoding='utf-8')
-
+cleaner(MP4_PATH)
 while True:
     a = str(input('Youtube-mp3 Downloader Mia BY:ÇÖZELTİ SOFTWARE\n1 = Single\n2 = PLaylist\n3 = Exit\n\n>>> '))
     if a == '3':
