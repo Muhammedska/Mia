@@ -62,6 +62,39 @@ def playlistChecker(url,file):
         else:
             file.write(url+',')
             indi+=1
+def opticore(url,mp4dir,mp3dir,downloadedlinklist):
+    linklist = downloadedlinklist
+    URL = url
+    playlist = Playlist(URL)
+    DOWNLOAD_DIR = mp4dir
+    playlist._video_regex = re.compile(r"\"url\":\"(/watch\?v=[\w-]*)")
+    print(len(playlist.video_urls))
+    for url in playlist.video_urls:
+        print(url)
+    indi = 1
+    for video in playlist.videos:
+        print('\n')
+        print('{} - {}  ::  downloading : {} with url : {}'.format(str(indi),
+              str(len(playlist.videos)), video.title, video.watch_url))
+        x = [s for s in video.streams if "mp4" in str(s)]
+
+        special_charsx = ['/', "|", '\\', '.', '"', "<", ">", "?", "*"]
+        videoname = video.author+' '+video.title
+        for i in special_charsx:
+            videoname = videoname.replace(i, ' ')
+        print(x[0].download(filename=DOWNLOAD_DIR+"/"+videoname+".mp4"))
+        print(':: {} :: Started to do convert'.format(videoname))
+        mp4_file = mp4dir+'/'+videoname+".mp4"
+        mp3_file = mp3dir+'/'+i.replace('.mp4', '.mp3')
+        videoclip = VideoFileClip(mp4_file)
+        audioclip = videoclip.audio
+        audioclip.write_audiofile(mp3_file)
+        
+        audioclip.close()
+        videoclip.close()        
+        os.remove(mp4_file)
+        indi += 1
+
 def cleaner(path):
     files = os.listdir(path)
     indi = 1
@@ -100,7 +133,7 @@ LINK_LIST_FILE = open(APP_ITEM_CORE_DIR+'app.txt','w+',encoding='utf-8')
 cleaner(MP4_PATH)
 while True:
     a = str(input('Youtube-mp3 Downloader Mia BY:ÇÖZELTİ SOFTWARE\n1 = Single\n2 = PLaylist\n3 = Exit\n\n>>> '))
-    if a == '3':
+    if a == '3'  or a == 'exit':
         break
     elif a == '2':
         while True:
@@ -115,8 +148,16 @@ while True:
                 print('\n\nstarting Convertion sessions\n\n')
                 dirScanCon(MP4_PATH,MP3_PATH)
                 print('\n\nstarting Convertion sessions ended\n\n')
-    elif a == '3':
+    elif a == '1':
         print('This Method wasn\'t available')
+        b = str(input('\nPLaylist link (0 or exit for mainmenu)\n=> '))
+        if b == '0' or b== 'exit':
+            break
+        else:
+            if 'music.youtube' in b:
+                b.replace('music.youtube','youtube')
+            lists = LINK_LIST_FILE.read().split(',')
+            opticore(b,MP4_PATH,MP3_PATH,lists)
 
                 
 
