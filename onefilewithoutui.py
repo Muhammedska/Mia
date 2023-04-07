@@ -39,16 +39,19 @@ def downPlaylist(url,downloadedlinklist,mp4dir):
     indi = 1
     for video in playlist.videos:
         print('\n')
-        print('{} - {}  ::  downloading : {} with url : {}'.format(str(indi),
-              str(len(playlist.videos)), video.title, video.watch_url))
-        x = [s for s in video.streams if "mp4" in str(s)]
-
-        special_charsx = ['/', "|", '\\', '.', '"', "<", ">", "?", "*"]
-        videoname = video.title
-        for i in special_charsx:
-            videoname = videoname.replace(i, ' ')
-        print(x[0].download(filename=DOWNLOAD_DIR+"/"+videoname+".mp4"))
+        try:
+            print('{} - {}  ::  downloading : {} with url : {} channel : {}'.format(str(indi),str(len(playlist.videos)), video.title, video.watch_url, video.author))
+            x = [s for s in video.streams if "mp4" in str(s)]
+            special_charsx = ['/', "|", '\\', '.', '"', "<", ">", "?", "*"]
+            videoname =video.author+ " - " + video.title
+            for i in special_charsx:
+                videoname = videoname.replace(i, ' ')
+            print(x[0].download(filename=DOWNLOAD_DIR+"/"+videoname+".mp4"))
+        except:
+            print(str(indi) + ' . videoda sıkıntı meydana geldi')
+        
         indi += 1
+
 def playlistChecker(url,file):
     URL = url
     playlist = Playlist(URL)
@@ -79,7 +82,8 @@ def opticore(url,mp4dir,mp3dir,downloadedlinklist):
         x = [s for s in video.streams if "mp4" in str(s)]
 
         special_charsx = ['/', "|", '\\', '.', '"', "<", ">", "?", "*"]
-        videoname = video.author+' '+video.title
+        #video.author+' '+
+        videoname = video.title
         for i in special_charsx:
             videoname = videoname.replace(i, ' ')
         print(x[0].download(filename=DOWNLOAD_DIR+"/"+videoname+".mp4"))
@@ -100,7 +104,7 @@ def cleaner(path):
     indi = 1
     
     for i in files:
-        os.remove(path+i)
+        os.remove(path+'/'+i)
         print("[{}/{} - ({})] files was removed".format(indi,len(files),i))
         indi+=1
 def dirScanCon(mp4dir,mp3dir):
@@ -125,9 +129,9 @@ def dirScanCon(mp4dir,mp3dir):
 print('checking system files and dirs')
 core()
 
-MP4_PATH = './core/mp4/'
-MP3_PATH = './core/mp3/'
-APP_ITEM_CORE_DIR = './core/t/'
+MP4_PATH = './core/mp4'
+MP3_PATH = './core/mp3'
+APP_ITEM_CORE_DIR = './core/t'
 
 LINK_LIST_FILE = open(APP_ITEM_CORE_DIR+'app.txt','w+',encoding='utf-8')
 cleaner(MP4_PATH)

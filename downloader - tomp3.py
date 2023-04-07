@@ -20,4 +20,4 @@ def dirScanCon(mp4dir,mp3dir):
         videoclip.close()
         print('converting ended.. next one \n')
         indi += 1
-dirScanCon('./nokia','./mp3')
+dirScanCon('./core/mp4','./mp3')
