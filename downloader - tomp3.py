@@ -12,7 +12,7 @@ def dirScanCon(mp4dir,mp3dir):
     for i in mp4:
         print('%{} ::  {}/{} :: Started to do convert {}'.format(str((100 *indi)/filelen), filelen, indi, i))
         mp4_file = MP4_DIR+'/'+i
-        mp3_file = MP3_DIR+'/'+i.replace('.mp4', '.mp3')
+        mp3_file = MP3_DIR+'/'+i.replace('.m4a', '.mp3')
         videoclip = VideoFileClip(mp4_file)
         audioclip = videoclip.audio
         audioclip.write_audiofile(mp3_file)
